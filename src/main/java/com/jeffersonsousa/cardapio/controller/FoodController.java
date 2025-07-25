@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,12 +23,14 @@ public class FoodController {
 	@Autowired
 	private FoodService foodService;
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@PostMapping
 	public ResponseEntity<Void> saveFood(@RequestBody FoodRequestDTO data){
 		foodService.save(data);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping
 	public ResponseEntity<List<FoodResponseDTO>> getAll(){
 		List<FoodResponseDTO> listFoods = foodService.getAll();
