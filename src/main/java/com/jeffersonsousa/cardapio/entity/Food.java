@@ -2,6 +2,8 @@ package com.jeffersonsousa.cardapio.entity;
 
 import java.util.Objects;
 
+import com.jeffersonsousa.cardapio.dto.FoodRequestDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +20,12 @@ public class Food {
 	private String title;
 	private String image;
 	private Integer price;
+	
+	public Food(FoodRequestDTO dto) {
+		this.title = dto.title();
+		this.image = dto.image();
+		this.price = dto.price();
+	}
 	
 	public Food() {
 	}
